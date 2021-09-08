@@ -5,12 +5,13 @@ The programme can works line by line with words seprate by a ':' or use the hole
 """
 
 from sys import path
+from typing import Text
 from Shuffle import *
 
 import argparse
 import os
 
-debug = 0
+debug = 1
 
 def dir_path(path):
     if os.path.isfile(path):
@@ -21,7 +22,7 @@ def dir_path(path):
 def argsProgram ():
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--input",type=dir_path, help="Path to file containing word list.", required = True)
-    parser.add_argument("-o", "--output",type=dir_path, help="Output name of file.", required = False)
+    parser.add_argument("-o", "--output",type=Text, help="Output name of file.", required = False)
     args = parser.parse_args()
     return (args.input,args.output)
 
@@ -48,7 +49,7 @@ def write_output (out_path,return_list):
 
 if __name__ == "__main__" :
     if debug == 1 :
-        file_path = r'list.txt'
+        file_path = r'cred'
         out_path = r'./out.txt'
         input_list = read_input(file_path)
     else :
